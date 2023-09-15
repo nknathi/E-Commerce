@@ -119,6 +119,28 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
+  // Checkout method
+  checkout = () => {
+    if (!this.state.user) {
+      this.routerRef.current.history.push("/login");
+      return;
+    }
+
+    const cart = this.state.cart;
+
+    const products = this.state.products.map(p => {
+      if (cart[p.name]) {
+        p.stock = p.stock - cart[p.name].amount;
+
+        axios.put(`http://localhost:3001/products/${p.id}`, { ...p },)
+      }
+      return p;
+    });
+
+    this.setState({ products });
+    this.clearCart();
+  };
+
   render() { 
     return(
       <Context.Provider value={{
