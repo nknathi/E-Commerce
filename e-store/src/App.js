@@ -73,6 +73,13 @@ export default class App extends Component {
     this.setState({ user, products: products.data });
   }
 
+  // AddProduct method
+  addProduct = (product, callback) => {
+    let products = this.state.products.slice();
+    products.push(product);
+    this.setState({ products }, () => callback && callback());
+  };
+
   render() { 
     return(
       <Context.Provider value={{
