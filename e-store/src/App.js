@@ -28,7 +28,7 @@ export default class App extends Component {
   }
 
   // Component mount for user
-  componentDidMount() {
+  componentDidMountUser() {
     let user = localStorage.getItem("user");
     user = user ? JSON.parse(user) : null;
     this.setState({ user });
@@ -64,6 +64,14 @@ export default class App extends Component {
     this.setState({ user: null });
     localStorage.removeItem("user");
   };
+
+  // Products component mount
+  async componentDidMount() {
+    let user = localStorage.getItem("user");
+    const products = await axios.get('http://localhost:3001/products');
+    user = user ? JSON.parse(user) : null;
+    this.setState({ user, products: products.data });
+  }
 
   render() { 
     return(
