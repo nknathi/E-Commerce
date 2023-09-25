@@ -1,8 +1,15 @@
 import React from "react";
 
+// defines a functional React component named ProductItem. 
+// It takes a single argument, props, which represents the properties passed to this component. 
+// In this case, it expects a product prop to be passed to it.
 const ProductItem = props => {
+    // extracts the product prop from the props object, 
+    // making it easier to access the properties of the product inside the component.
     const { product } = props;
 
+    // return statement defines the JSX code that will be rendered when this component is used.
+    // It describes how a single product item should be displayed on a webpage.
     return (
         <div className=" column is-half">
             <div className="box">
