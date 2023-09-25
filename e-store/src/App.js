@@ -16,6 +16,12 @@ import ProductList from './components/ProductList';
 
 import Context from "./Context";
 
+// Headers 
+const headers = {
+  'Access-Control-Allow-Origin': 'https://localhost:3001',
+  'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+};
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -39,12 +45,13 @@ export default class App extends Component {
 
     this.setState({ user, products: products.data, cart });
   }
-
+  
   // Define login()
   login = async (email, password) => {
     const res = await axios.post(
       'http://localhost:3001/login',
       { email, password },
+      { headers: headers },
     ).catch((res) => {
       return { status: 401, message: 'Unauthorized' }
     })

@@ -18,7 +18,7 @@ const Cart = props => {
             {cartKeys.length ? (
                 <div className="column columns is-multiline">
                     {cartKeys.map(keys => (
-                        <CartItem cartKey={key} key={key} cartItem={cart[key]} removeFromCart={props.context.removeFromCart} />
+                        <CartItem cartKey={keys} key={keys} cartItem={cart[keys]} removeFromCart={props.context.removeFromCart} />
                     ))}
                     <div className="column is-12 is-clearfix">
                         <br />
